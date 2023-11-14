@@ -1,0 +1,20 @@
+<app-task-filter (filterSelected)="applyFilter($event)" class="my-3">
+  <!-- El componente TaskFilter -->
+</app-task-filter>
+
+<ul class="list">
+  <li *ngFor="let task of tasks; let i = index" class="list-group-item">
+    <div *ngIf="filter === 'Todas'">
+      <input type="checkbox" [(ngModel)]="estado[i]" (change)="status($event, i)" class="form-check-input">
+      {{ task }}
+    </div>
+    <div *ngIf="filter === 'Completadas' && estado[i]">
+      <input type="checkbox" [(ngModel)]="estado[i]" (change)="status($event, i)" class="form-check-input">
+      {{ task }}
+    </div>
+    <div *ngIf="filter === 'No completadas' && !estado[i]">
+      <input type="checkbox" [(ngModel)]="estado[i]" (change)="status($event, i)" class="form-check-input">
+      {{ task }}
+    </div>
+  </li>
+</ul>
